@@ -1,17 +1,16 @@
 package br.com.procergs;
 
-import jakarta.enterprise.context.RequestScoped;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
 
-@RequestScoped
+@Stateless // Transformação em EJB
 public class PessoaRepository {
 
     @PersistenceContext(unitName = "procergs-pu") // Injeta o gerente de entidades
     private EntityManager em;
 
-    @Transactional
+    //Removido o @Transactional
     public void salvar(Pessoa p) {
         em.persist(p);
     }
