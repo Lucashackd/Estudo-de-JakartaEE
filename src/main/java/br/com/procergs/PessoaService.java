@@ -3,6 +3,8 @@ package br.com.procergs;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
+import java.util.List;
+
 @Stateless
 public class PessoaService {
 
@@ -20,5 +22,9 @@ public class PessoaService {
         // Se passou nas regras, manda o operário salvar
         // A transação do EJB "flui" para dentro do Repoitory automaticamente
         repository.salvar(p);
+    }
+
+    public List<Pessoa> listar() {
+        return repository.listarTodos();
     }
 }
