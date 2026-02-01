@@ -10,17 +10,17 @@ import jakarta.ws.rs.core.MediaType;
 public class HelloResource {
 
     @Inject
-    private PessoaRepository repository;
+    private PessoaService service; // Agora falamos com o "gerente" (EJB)
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String dizerOla() {
         // Cria um objeto Java
-        Pessoa p = new Pessoa("Desenvolvedor Procergs", "Full Stack Java");
+        Pessoa p = new Pessoa("usuario via api", "Testador REST");
 
         // Manda pro banco
-        repository.salvar(p);
+        service.cadastrarNovaPessoa(p);
 
-        return "Sucesso! A pessoa com ID " + p.getId() + " foi salva no banco H2.";
+        return "Sucesso! A pessoa " + p.getNome() + " com ID " + p.getId() + " foi salva no banco H2 via EJB.";
     }
 }

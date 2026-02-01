@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class PessoaBean implements Serializable {
 
     @Inject
-    private PessoaRepository repository;
+    private PessoaService service; // Mudou de Repository para Service
 
     private Pessoa pessoa = new Pessoa();
     private String mensagem;
@@ -27,7 +27,8 @@ public class PessoaBean implements Serializable {
     // Metodo chamado pelo botão "Salvar"
     public void salvar() {
         try {
-            repository.salvar(pessoa);
+            service.cadastrarNovaPessoa(pessoa);
+
             mensagem = "Sucesso! " + pessoa.getNome() + " cadastrado com ID " + pessoa.getId();
             pessoa = new Pessoa();
         } catch (Exception e) {
