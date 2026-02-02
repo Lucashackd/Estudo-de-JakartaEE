@@ -15,7 +15,8 @@ public class PessoaRepository {
     // Nota: Sem @Transactional e sem @Stateless(classe)
     // Ele vai "pegar carona" na transação de quem chamar ele.
     public void salvar(Pessoa p) {
-        em.persist(p);
+        if (p.getId() == null) em.persist(p);
+        else em.merge(p);
     }
 
     public List<Pessoa> listarTodos() {

@@ -52,6 +52,11 @@ public class PessoaBean implements Serializable {
         }
     }
 
+    public void editar(Pessoa p) {
+        this.pessoa = p; // Joga os dados da tabela para o formulário
+        // Não precisa de atualizarLista aqui, pois não muda nada no banco ainda
+    }
+
     public Pessoa getPessoa() { return pessoa; }
 
     public void setPessoa(Pessoa pessoa) { this.pessoa = pessoa; }

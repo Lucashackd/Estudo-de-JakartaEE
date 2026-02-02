@@ -75,6 +75,10 @@
                              onclick="return confirm('Tem certeza?');">
                 <f:ajax execute="@this" render="@form"/>
             </h:commandButton>
+
+            <h:commandButton value="Editar" action="#{pessoaBean.editar(p)}" style="margin-left: 5px;">
+                <f:ajax execute="@this" render="@form"/>
+            </h:commandButton>
         </h:column>
     </h:dataTable>
 </h:form>
