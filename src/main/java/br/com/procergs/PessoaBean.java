@@ -42,6 +42,16 @@ public class PessoaBean implements Serializable {
         }
     }
 
+    public void excluir(Long id) {
+        try {
+            service.excluir(id);
+            mensagem = "Regsitro removido com sucesso";
+            atualizarLista();
+        } catch (Exception e) {
+            mensagem = "Erro ao excluir: " + e.getMessage();
+        }
+    }
+
     public Pessoa getPessoa() { return pessoa; }
 
     public void setPessoa(Pessoa pessoa) { this.pessoa = pessoa; }

@@ -23,4 +23,14 @@ public class PessoaRepository {
         // Nota: Não usamos "SELECT * FROM TAB_PESSOA". Usamos o nome da CLASSE.
         return em.createQuery("SELECT p FROM Pessoa p", Pessoa.class).getResultList();
     }
+
+    public void excluir(Long id) {
+        // Passo 1: Trazer para o contexto (Managed)
+        Pessoa p = em.find(Pessoa.class, id);
+
+        // Passo 2: Se existir, marcar para remoção
+        if (p != null) {
+            em.remove(p);
+        }
+    }
 }

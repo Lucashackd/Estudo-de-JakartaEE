@@ -27,4 +27,8 @@ public class PessoaService {
     public List<Pessoa> listar() {
         return repository.listarTodos();
     }
+
+    public void excluir(Long id) {
+        repository.excluir(id);
+    }
 }
